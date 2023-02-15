@@ -25,7 +25,8 @@ function App() {
   }, [currentId]);
 
   const getPokemon = (id) => {
-    setCurrentId(id);
+    if (id <=0) setCurrentId(1);
+    else setCurrentId(id);
   };
 
   return (
@@ -37,14 +38,14 @@ function App() {
         </div>
 
         <div>
-          <img src={pokemon.sprites.front_default} className="App-logo" alt="logo" />
+          {/* <img src={pokemon.sprites.front_default} className="App-logo" alt="logo" /> */}
           {/* <img src={pokemon.sprites.other["official-artwork"].front_default} className="App-logo" alt="logo" /> */}
-
+          <img src={pokemon.sprites.other.home.front_default} className="App-logo" alt="logo" />
         </div>
 
         <br></br>
         <div>
-          <label>Weight</label>
+          <label>Weight</label><br></br>
           <label>{pokemon.weight}</label>
         </div>
 
