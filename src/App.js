@@ -3,6 +3,8 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Weaknesses from './components/Weaknesses';
+import Stats from './components/Stats';
+import { Chart } from "react-google-charts";
 
 function App() {
 
@@ -38,9 +40,9 @@ function App() {
         </div>
 
         <div>
-          {/* <img src={pokemon.sprites.front_default} className="App-logo" alt="logo" /> */}
+          <img src={pokemon.sprites.front_default} className="App-logo" alt="logo" />
           {/* <img src={pokemon.sprites.other["official-artwork"].front_default} className="App-logo" alt="logo" /> */}
-          <img src={pokemon.sprites.other.home.front_default} className="App-logo" alt="logo" />
+          {/* <img src={pokemon.sprites.other.home.front_default} className="App-logo" alt="logo" /> */}
         </div>
 
         <br></br>
@@ -72,7 +74,13 @@ function App() {
           <button onClick={() => getPokemon(currentId - 1)}>Previous</button>
           <button onClick={() => getPokemon(currentId + 1)}>Next</button>
         </div>
+        
         <br></br>
+        <div>
+          
+          <Stats></Stats>
+        </div>
+
       </header>
     </div>
   );
