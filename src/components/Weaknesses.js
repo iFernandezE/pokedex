@@ -1,6 +1,6 @@
 import React from "react";
 import {v4 as uuidv4} from 'uuid';
-
+import { Box } from '@mui/system';
 function Weaknesses(props){
 
     //fuente: https://www.wikihow.com/Learn-Type-Weaknesses-in-Pok%C3%A9mon 
@@ -35,13 +35,13 @@ function Weaknesses(props){
     });
 
     return(
-        <div>
+        <Box sx={{display:"flex", flexDirection: "row" , justifyContent: "space-around"}}>
             {actualPokWeaknesses.map(item => (
               <div key={uuidv4()}>
                 <label>{item}</label>
               </div>
             ))}
-        </div>
+        </Box>
     );
 }
 
