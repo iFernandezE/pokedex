@@ -1,47 +1,49 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { v4 as uuidv4 } from 'uuid';
 import Weaknesses from './Weaknesses';
+import Types from './Types';
 import Stats from './Stats';
-import { CardHeader } from '@mui/material';
+import { CardHeader, Collapse } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import { Box } from '@mui/system';
 import fondoCarta from '../images/fondoCarta.jpg';
+import Abilities from './Abilities';
 
 export default function MediaCard(props) {
+    let bgBoxes='rgba(244, 157, 26,0.6)';
     return (
+        
         <Card sx={{
-            maxWidth: 350,  display: 'flex',
-            
+            maxWidth: 350, display: 'flex',
             backgroundImage: `url(${fondoCarta})`,
             flexDirection: 'column',
             alignItems: 'center',
             borderRadius: 5,
             borderColor: 'gold',
-            borderWidth: 10 ,
-            borderBlockStyle: 'solid'
+            borderWidth: 10,
+            borderBlockStyle: 'solid',
+            margin: 1
         }}>
             {/* cabecera */}
             <CardHeader
                 sx={{ minWidth: 280 }}
                 avatar={
-                    <Avatar aria-label="recipe">
+                    <Avatar aria-label="recipe" sx={{width: 55,height:55}}>
                         <CardMedia
                             sx={{ backgroundColor: props.pokeColor.name }}
                             component="img"
-                            height="40"
+                            height="55"
                             image={props.pokeImageLow}
                             title="pokemon"
                         />
                     </Avatar>
                 }
                 title={
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography gutterBottom variant="h4" component="div" textTransform="uppercase" fontWeight="bold" fontFamily="monospace" letterSpacing={2}>
                         {props.pokeName}
                     </Typography>
                 }
@@ -55,11 +57,11 @@ export default function MediaCard(props) {
             {/* imagen */}
             <Box
                 sx={{
-                    bgcolor: props.pokeColor.name,
+                    //bgcolor: props.pokeColor.name,
                     boxShadow: 1,
                     borderRadius: 5,
                     p: 0,
-                    width: 250,
+                    width: 220,
                 }}
             >
                 <CardMedia
@@ -71,47 +73,76 @@ export default function MediaCard(props) {
 
             {/* contenido */}
             <CardContent sx={{ maxWidth: 350, display: 'flex', flexDirection: 'column' }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-around',borderRadius: 3,
+                    p: 1,
+                    backgroundColor: bgBoxes,
+                    margin:0.5 }}>
                     <Box>
-                        <Typography variant="h6" color="text.secondary">
-                            weight
+                        <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
+                            Weight
                         </Typography>
                         {props.pokeWeight}
                     </Box>
                     <Box>
-                        <Typography variant="h6" color="text.secondary">
-                            height
+                        <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
+                            Height
                         </Typography>
                         {props.pokeHeight}
                     </Box>
 
                 </Box>
-                <br></br>
-                <Box>
-                    <Typography variant="h6" color="text.secondary">
+        
+                <Box sx={{
+                    borderRadius: 3,
+                    p: 1,
+                    backgroundColor: bgBoxes,
+                    margin:0.5}}>
+                    <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
                         Abilities
                     </Typography>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                        {props.pokeAbilities.map(item => (
-                            <div key={uuidv4()}>
-                                <label>{item.ability.name}</label>
-                            </div>
-                        ))}
-                    </Box>
+                    <Abilities pokeAbilities = {props.pokeAbilities}></Abilities>
                 </Box>
-                <br></br>
-                <Box>
-                    <Typography variant="h6" color="text.secondary">
+                
+                <Box sx={{
+                    borderRadius: 3,
+                    p: 1,
+                    backgroundColor: bgBoxes,
+                    margin:0.5,
+                }}>
+                    <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
+                        Types
+                    </Typography>
+                    <Types pokeTypes={props.pokeTypes}></Types>
+                </Box>
+
+                <Box sx={{
+                    borderRadius: 3,
+                    p: 1,
+                    backgroundColor: bgBoxes,
+                    margin:0.5,
+                }}>
+                    <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
                         Weaknesses
                     </Typography>
-                    
                     <Weaknesses pokeTypes={props.pokeTypes}></Weaknesses>
                 </Box>
-                <br></br>
-                <Stats pokeStats={props.pokeStats}></Stats>
+
+                <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexDirection:'column',
+                    borderRadius: 3,
+                    p: 0,
+                    backgroundColor: bgBoxes,
+                    margin:0.5
+                    // backgroundColor: '#FFE15D'
+                }}>
+                    <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
+                        Stats
+                    </Typography>
+                    <Stats pokeStats={props.pokeStats}></Stats>
+                </Box>
             </CardContent>
-
-
 
         </Card>
     );

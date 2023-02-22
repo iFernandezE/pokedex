@@ -17,12 +17,18 @@ const options = {
     },
   },
   legend: { position: 'none' },
+  backgroundColor:{
+    fill: 'none',
+    fillOpacity: '0.5'
+  }
+    
+  
 };
 
 var constructPokeStats2 = function (stats) {
   let data = [['Element', 'level', { role: 'style' }]];
   stats.forEach(element => {
-    let subData = [`${element.stat.name}`, element.base_stat, 'gold'];
+    let subData = [`${element.stat.name}`, element.base_stat, '#B01E68'];
     data.push(subData);
   });
   return data;
@@ -46,7 +52,7 @@ function Stats(props) {
   return (
     <Chart
       chartType="ColumnChart"
-      width="350px"
+      width= "330px"
       height="200px"
       data={constructPokeStats2(props.pokeStats)}
       options={options}

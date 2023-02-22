@@ -6,6 +6,7 @@ const StyledButton = styled.button`
     border-radius: 10px;
     margin-top: 160px;
     margin-bottom: 160px;
+    background-color: #B01E68;
 `;
 
 function Button(props){

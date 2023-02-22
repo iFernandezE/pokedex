@@ -1,6 +1,9 @@
+body{
+  background-color: #DC3535;
+}
 .App {
   text-align: center;
-  background-color: #aa1e1e;
+  
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -19,10 +22,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-button{
-  font-size: 100px;
-  background-color: rgb(24, 71, 71);
-  color: aliceblue;
 }
