@@ -10,19 +10,17 @@ const options = {
     easing: "out",
     startup: true,
   },
-  vAxis: {
-    viewWindow: {
-      max: 0,
-      min: 150,
-    },
-  },
+  // vAxis: {
+  //   viewWindow: {
+  //     max: 0,
+  //     min: 150,
+  //   },
+  // },
   legend: { position: 'none' },
   backgroundColor:{
     fill: 'none',
     fillOpacity: '0.5'
   }
-    
-  
 };
 
 var constructPokeStats2 = function (stats) {

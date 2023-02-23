@@ -3,7 +3,6 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { v4 as uuidv4 } from 'uuid';
 import Weaknesses from './Weaknesses';
 import Types from './Types';
 import Stats from './Stats';
@@ -12,11 +11,13 @@ import Avatar from '@mui/material/Avatar';
 import { Box } from '@mui/system';
 import fondoCarta from '../images/fondoCarta.jpg';
 import Abilities from './Abilities';
+import Fade from '@mui/material/Fade';
+import Tooltip from '@mui/material/Tooltip';
 
 export default function MediaCard(props) {
-    let bgBoxes='rgba(244, 157, 26,0.6)';
+    let bgBoxes = 'rgba(244, 157, 26,0.6)';
     return (
-        
+
         <Card sx={{
             maxWidth: 350, display: 'flex',
             backgroundImage: `url(${fondoCarta})`,
@@ -32,7 +33,7 @@ export default function MediaCard(props) {
             <CardHeader
                 sx={{ minWidth: 280 }}
                 avatar={
-                    <Avatar aria-label="recipe" sx={{width: 55,height:55}}>
+                    <Avatar aria-label="recipe" sx={{ width: 55, height: 55 }}>
                         <CardMedia
                             sx={{ backgroundColor: props.pokeColor.name }}
                             component="img"
@@ -62,52 +63,64 @@ export default function MediaCard(props) {
                     borderRadius: 5,
                     p: 0,
                     width: 220,
+                    '&:hover': {
+                        backgroundColor: props.pokeColor.name,
+                      }
                 }}
             >
-                <CardMedia
-                    component="img"
-                    image={props.pokeImage}
-                    title="pokemon"
-                />
+                <Tooltip
+                    TransitionComponent={Fade}
+                    TransitionProps={{ timeout: 600 }}
+                    title={props.pokeName}
+                >
+                    <CardMedia
+                        component="img"
+                        image={props.pokeImage}
+                        title="pokemon"
+                    />
+                </Tooltip>
             </Box>
 
             {/* contenido */}
             <CardContent sx={{ maxWidth: 350, display: 'flex', flexDirection: 'column' }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-around',borderRadius: 3,
+                <Box sx={{
+                    display: 'flex', justifyContent: 'space-around', borderRadius: 3,
                     p: 1,
                     backgroundColor: bgBoxes,
-                    margin:0.5 }}>
+                    margin: 0.5
+                }}>
                     <Box>
                         <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
                             Weight
                         </Typography>
-                        {props.pokeWeight}
+                        {props.pokeWeight / 10 + ' Kg.'}
                     </Box>
                     <Box>
                         <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
                             Height
                         </Typography>
-                        {props.pokeHeight}
+                        {props.pokeHeight / 10 + ' m.'}
                     </Box>
 
                 </Box>
-        
+
                 <Box sx={{
                     borderRadius: 3,
                     p: 1,
                     backgroundColor: bgBoxes,
-                    margin:0.5}}>
+                    margin: 0.5
+                }}>
                     <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
                         Abilities
                     </Typography>
-                    <Abilities pokeAbilities = {props.pokeAbilities}></Abilities>
+                    <Abilities pokeAbilities={props.pokeAbilities}></Abilities>
                 </Box>
-                
+
                 <Box sx={{
                     borderRadius: 3,
                     p: 1,
                     backgroundColor: bgBoxes,
-                    margin:0.5,
+                    margin: 0.5,
                 }}>
                     <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
                         Types
@@ -119,7 +132,7 @@ export default function MediaCard(props) {
                     borderRadius: 3,
                     p: 1,
                     backgroundColor: bgBoxes,
-                    margin:0.5,
+                    margin: 0.5,
                 }}>
                     <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
                         Weaknesses
@@ -130,11 +143,11 @@ export default function MediaCard(props) {
                 <Box sx={{
                     display: 'flex',
                     justifyContent: 'center',
-                    flexDirection:'column',
+                    flexDirection: 'column',
                     borderRadius: 3,
                     p: 0,
                     backgroundColor: bgBoxes,
-                    margin:0.5
+                    margin: 0.5
                     // backgroundColor: '#FFE15D'
                 }}>
                     <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>

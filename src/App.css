@@ -3,11 +3,11 @@ body{
 }
 .App {
   text-align: center;
-  
+  justify-content: center;
   display: flex;
   flex-direction: row;
-  align-items: stretch;
-  justify-content: space-around;
+  align-items: center;
+  /* justify-content: space-around; */
 
 }
 
