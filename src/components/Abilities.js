@@ -4,7 +4,7 @@ import { Box } from '@mui/system';
 
 function Abilities(props) {
     return (
-        <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-around" }}>
+        <Box  sx={{ textTransform: "capitalize", display: "flex", flexDirection: "row", justifyContent: "space-around" }}>
             {
                 props.pokeAbilities.map(item =>(
                     <div key={uuidv4()}>

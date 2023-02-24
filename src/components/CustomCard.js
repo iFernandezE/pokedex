@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Weaknesses from './Weaknesses';
 import Types from './Types';
 import Stats from './Stats';
-import { CardHeader, Collapse } from '@mui/material';
+import { CardHeader } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import { Box } from '@mui/system';
 import fondoCarta from '../images/fondoCarta.jpg';
@@ -15,19 +15,25 @@ import Fade from '@mui/material/Fade';
 import Tooltip from '@mui/material/Tooltip';
 
 export default function MediaCard(props) {
-    let bgBoxes = 'rgba(244, 157, 26,0.6)';
+    let bgBoxes = 'rgba(244, 157, 26,0.5)';
+    let bgBoxes2 = 'rgba(244, 157, 26,1)';
     return (
 
         <Card sx={{
             maxWidth: 350, display: 'flex',
-            backgroundImage: `url(${fondoCarta})`,
+            backgroundImage: `url(${fondoCarta}) `,
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
             flexDirection: 'column',
             alignItems: 'center',
             borderRadius: 5,
-            borderColor: 'gold',
-            borderWidth: 10,
-            borderBlockStyle: 'solid',
-            margin: 1
+            // borderColor: 'gold',
+            // borderWidth: 10,
+            // borderBlockStyle: 'solid',
+            margin: 1,
+            border: '5px solid gold',
+            boxShadow: '0px 0px 25px 10px rgb(255, 230, 0)'
         }}>
             {/* cabecera */}
             <CardHeader
@@ -65,31 +71,33 @@ export default function MediaCard(props) {
                     width: 220,
                     '&:hover': {
                         backgroundColor: props.pokeColor.name,
-                      }
+                        transition: '0.3s ease-in-out',
+                    }
                 }}
             >
-                <Tooltip
-                    TransitionComponent={Fade}
-                    TransitionProps={{ timeout: 600 }}
-                    title={props.pokeName}
-                >
-                    <CardMedia
-                        component="img"
-                        image={props.pokeImage}
-                        title="pokemon"
-                    />
-                </Tooltip>
+                
+                <CardMedia
+                    component="img"
+                    image={props.pokeImage}
+                    title="pokemon"
+                />
+
             </Box>
 
             {/* contenido */}
-            <CardContent sx={{ maxWidth: 350, display: 'flex', flexDirection: 'column' }}>
+            <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Box sx={{
                     display: 'flex', justifyContent: 'space-around', borderRadius: 3,
                     p: 1,
                     backgroundColor: bgBoxes,
-                    margin: 0.5
+                    margin: 0.5,
+                    '&:hover': {
+                        backgroundColor: bgBoxes2,
+                        transition: '0.2s ease-in-out',
+                        fontWeight: 'bold'
+                    }
                 }}>
-                    <Box>
+                    <Box >
                         <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
                             Weight
                         </Typography>
@@ -108,7 +116,12 @@ export default function MediaCard(props) {
                     borderRadius: 3,
                     p: 1,
                     backgroundColor: bgBoxes,
-                    margin: 0.5
+                    margin: 0.5,
+                    '&:hover': {
+                        backgroundColor: bgBoxes2,
+                        transition: '0.2s ease-in-out',
+                        fontWeight: 'bold'
+                    }
                 }}>
                     <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
                         Abilities
@@ -121,6 +134,11 @@ export default function MediaCard(props) {
                     p: 1,
                     backgroundColor: bgBoxes,
                     margin: 0.5,
+                    '&:hover': {
+                        backgroundColor: bgBoxes2,
+                        transition: '0.2s ease-in-out',
+                        fontWeight: 'bold'
+                    }
                 }}>
                     <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
                         Types
@@ -133,6 +151,11 @@ export default function MediaCard(props) {
                     p: 1,
                     backgroundColor: bgBoxes,
                     margin: 0.5,
+                    '&:hover': {
+                        backgroundColor: bgBoxes2,
+                        transition: '0.2s ease-in-out',
+                        fontWeight: 'bold'
+                    }
                 }}>
                     <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
                         Weaknesses
@@ -147,8 +170,13 @@ export default function MediaCard(props) {
                     borderRadius: 3,
                     p: 0,
                     backgroundColor: bgBoxes,
-                    margin: 0.5
+                    margin: 0.5,
                     // backgroundColor: '#FFE15D'
+                    '&:hover': {
+                        backgroundColor: bgBoxes2,
+                        transition: '0.2s ease-in-out',
+                        fontWeight: 'bold'
+                    }
                 }}>
                     <Typography variant="body1" color="text.secondary" fontWeight='medium' fontFamily='fantasy'>
                         Stats

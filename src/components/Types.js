@@ -4,7 +4,7 @@ import { Box } from '@mui/system';
 
 function Types(props) {
     return (
-        <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-around" }}>
+        <Box sx={{ textTransform: "capitalize", display: "flex", flexDirection: "row", justifyContent: "space-around" }}>
             {
                 props.pokeTypes.map(item =>(
                     <div key={uuidv4()}>

@@ -35,7 +35,7 @@ function Weaknesses(props){
     });
 
     return(
-        <Box sx={{display:"flex", flexDirection: "row" , justifyContent: "space-around"}}>
+        <Box sx={{ textTransform: "capitalize" , display:"flex", flexDirection: "row" , justifyContent: "space-around"}}>
             {actualPokWeaknesses.map(item => (
               <div key={uuidv4()}>
                 <label>{item}</label>

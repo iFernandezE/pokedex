@@ -17,44 +17,38 @@ const options = {
   //   },
   // },
   legend: { position: 'none' },
-  backgroundColor:{
+  backgroundColor: {
     fill: 'none',
     fillOpacity: '0.5'
   }
 };
 
-var constructPokeStats2 = function (stats) {
+var constructPokeStats1 = function (stats) {
   let data = [['Element', 'level', { role: 'style' }]];
   stats.forEach(element => {
-    let subData = [`${element.stat.name}`, element.base_stat, '#B01E68'];
+    let subData = [`${element.stat.name}`, element.base_stat, '#B01E68',];
     data.push(subData);
   });
+  //console.log(data);
+  // HP ATTACK DEFENSE SPECIALATTACK SPECIALDENFENSE SPEED
+  try {
+    data[1][0] = 'HP'; data[2][0] = 'ATK'; data[3][0] = 'DEF';
+    data[4][0] = 'SP ATK'; data[5][0] = 'SP DEF'; data[6][0] = 'SPD';
+  } catch (error) {
+  }
   return data;
-}
-
-var constructPokeStats = function(stats){
-  let data = [['Element', 'level', { role: 'style' }],
-  ['HP',stats[0].base_stat,'red'],
-  ['ATTACK',stats[1].base_stat,'orange'],
-  ['DEFENSE',stats[2].base_stat,'blue'],
-  ['SPECIAL\nATTACK',stats[3].base_stat,'gray'],
-  ['SPECIAL\nDEFENSE',stats[4].base_stat,'green'],
-  ['SPEED',stats[5].base_stat,'orange']
-]
-  return data;
-  
 }
 
 function Stats(props) {
-  // constructPokeStats(props.pokeStats);
   return (
     <Chart
       chartType="ColumnChart"
-      width= "330px"
+      width="330px"
       height="200px"
-      data={constructPokeStats2(props.pokeStats)}
-      options={options}
       
+      data={constructPokeStats1(props.pokeStats)}
+      options={options}
+
     />
   );
 }
