@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 function usePokeChanger(pokeApiDomain) {
-
-
     const [currentId, setCurrentId] = useState(1);
     const [pokemon, setPokemon] = useState({ id: 0, sprites: { other: { home: {} } }, weight: 0, height: 0, abilities: [], types: [], stats: [], species: { url: "" } });
     const [pokemonSpecies, setPokemonSpecies] = useState({ color: { name: 'white' } });
