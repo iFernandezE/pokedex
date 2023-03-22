@@ -1,0 +1,17 @@
+const frameworks = ["React", "Vue", "Angular", "Svelte"];
+
+// Test arrays
+test("It should has React", () => {
+  expect(frameworks).toContain("React");
+});
+
+// Test numbers
+test("It should be greater than", () => {
+  expect(10).toBeGreaterThan(9);
+});
+
+// Test Booleans
+test("It should be true", () => {
+  expect(true).toBeTruthy();
+});
+

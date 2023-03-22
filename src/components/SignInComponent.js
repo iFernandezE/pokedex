@@ -65,21 +65,21 @@ function SignInComponent(props) {
     }
 
     return (
-        <div>
+        <div >
             <title>{"Sign In"}</title>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="loginContent">
                 <label>Email: </label>
                 <input type={"email"}
                        value={email}
                        onChange={handleEmailInputChange} 
                 />
-                <br></br>
+                
                 <label>Password: </label>
                 <input type={"password"}
                        value={password}
                        onChange={handlePasswordInputChange} 
                 />
-                <br></br>
+                
                 <label>
                     <input type="checkbox"
                        checked={rememberMe}
@@ -87,7 +87,7 @@ function SignInComponent(props) {
                     />
                     Remember me
                 </label>
-                <br></br>
+                
                 <input type="submit" value="Submit" />
             </form>
         </div>

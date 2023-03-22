@@ -2,17 +2,21 @@ import MediaCard from './CustomCard';
 import usePokeChanger from './CustomHooks'
 import Button from './Button';
 
-function Pokedex() {
+import React from 'react';
 
+function Pokedex() {
+    
     const pokeApiDomain = `https://pokeapi.co/api/v2/pokemon/`;
     const [previousPokemon, nextPokemon, pokemon, pokemonSpecies] = usePokeChanger(pokeApiDomain);
 
     return (
-        <div className="App">
-            <Button
-                onClick={previousPokemon}
-                text={"<"}
-            ></Button>
+        <div className="pokedex">
+            <div>
+                <Button
+                    onClick={previousPokemon}
+                    text={"<"}
+                ></Button>
+            </div>
             <div>
                 <MediaCard
                     pokeName={pokemon.name}
@@ -31,10 +35,12 @@ function Pokedex() {
                 ></MediaCard>
                 <br></br>
             </div>
-            <Button
-                onClick={nextPokemon}
-                text={">"}
-            ></Button>
+            <div>
+                <Button
+                    onClick={nextPokemon}
+                    text={">"}
+                ></Button>
+            </div>
         </div>
     )
 }

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -10,18 +9,29 @@ import { CardHeader } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import { Box } from '@mui/system';
 import fondoCarta from '../images/fondoCarta.jpg';
+import fondoCartaDark from '../images/fondoCartaDark.jpg';
 import Abilities from './Abilities';
-import Fade from '@mui/material/Fade';
-import Tooltip from '@mui/material/Tooltip';
+import React, { useContext } from 'react';
+import ThemeContext from '../context/ThemeContext';
+
 
 export default function MediaCard(props) {
-    let bgBoxes = 'rgba(244, 157, 26,0.5)';
-    let bgBoxes2 = 'rgba(244, 157, 26,1)';
+    const data = useContext(ThemeContext);
+    let bgBoxes,bgBoxes2;
+    if (data.theme === 'light') {
+        bgBoxes = 'rgba(244, 157, 26,0.5)';
+        bgBoxes2 = 'rgba(244, 157, 26,1)';
+    }
+    else {
+        bgBoxes = 'rgba(100, 157, 226,0.5)';
+        bgBoxes2 = 'rgba(100, 157, 226,1)';
+    }
+
     return (
 
         <Card sx={{
             maxWidth: 350, display: 'flex',
-            backgroundImage: `url(${fondoCarta}) `,
+            backgroundImage: data.theme === 'light' ? `url(${fondoCarta}) ` : `url(${fondoCartaDark}) `,
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
@@ -32,8 +42,8 @@ export default function MediaCard(props) {
             // borderWidth: 10,
             // borderBlockStyle: 'solid',
             margin: 1,
-            border: '5px solid gold',
-            boxShadow: '0px 0px 25px 10px rgb(255, 230, 0)'
+            border: data.theme === 'light' ? '5px solid gold':'5px solid darkBlue',
+            boxShadow: data.theme === 'light' ? '0px 0px 25px 10px rgb(255, 230, 0)': '0px 0px 25px 10px rgb(20, 20, 150)'
         }}>
             {/* cabecera */}
             <CardHeader
@@ -75,7 +85,7 @@ export default function MediaCard(props) {
                     }
                 }}
             >
-                
+
                 <CardMedia
                     component="img"
                     image={props.pokeImage}
