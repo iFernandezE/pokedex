@@ -1,6 +1,10 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import IconButton from '@mui/material/IconButton';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
+
 import Typography from '@mui/material/Typography';
 import Weaknesses from './Weaknesses';
 import Types from './Types';
@@ -14,10 +18,18 @@ import Abilities from './Abilities';
 import React, { useContext } from 'react';
 import ThemeContext from '../context/ThemeContext';
 
+import { addToFavorites, removeFromFavorites } from './redux/actions/pokedexActions';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 export default function MediaCard(props) {
+
+    const favorites = useSelector(state => state);
+    const dispatch = useDispatch();
+
     const data = useContext(ThemeContext);
-    let bgBoxes,bgBoxes2;
+    let bgBoxes, bgBoxes2;
+
     if (data.theme === 'light') {
         bgBoxes = 'rgba(244, 157, 26,0.5)';
         bgBoxes2 = 'rgba(244, 157, 26,1)';
@@ -25,6 +37,19 @@ export default function MediaCard(props) {
     else {
         bgBoxes = 'rgba(100, 157, 226,0.5)';
         bgBoxes2 = 'rgba(100, 157, 226,1)';
+    }
+
+    var isFavorite = false;
+    if (favorites) {
+        if(favorites.includes(props.pokeNum)){
+            isFavorite = true;
+        }
+    }
+
+    function handleFavoriteClick() {
+        console.log(isFavorite);
+        if(!isFavorite)dispatch(addToFavorites(props.pokeNum));
+        else if(isFavorite)dispatch(removeFromFavorites(props.pokeNum));
     }
 
     return (
@@ -42,8 +67,8 @@ export default function MediaCard(props) {
             // borderWidth: 10,
             // borderBlockStyle: 'solid',
             margin: 1,
-            border: data.theme === 'light' ? '5px solid gold':'5px solid darkBlue',
-            boxShadow: data.theme === 'light' ? '0px 0px 25px 10px rgb(255, 230, 0)': '0px 0px 25px 10px rgb(20, 20, 150)'
+            border: data.theme === 'light' ? '5px solid gold' : '5px solid darkBlue',
+            boxShadow: data.theme === 'light' ? '0px 0px 25px 10px rgb(255, 230, 0)' : '0px 0px 25px 10px rgb(20, 20, 150)'
         }}>
             {/* cabecera */}
             <CardHeader
@@ -58,6 +83,15 @@ export default function MediaCard(props) {
                             title="pokemon"
                         />
                     </Avatar>
+                }
+                action={
+                    <IconButton
+                        onClick={handleFavoriteClick}
+                        aria-label="settings"
+                        >
+                        
+                        {isFavorite ? <StarIcon fontSize="large" sx={{ color: 'gold' }}/> : <StarBorderIcon fontSize="large" />}
+                    </IconButton>
                 }
                 title={
                     <Typography gutterBottom variant="h4" component="div" textTransform="uppercase" fontWeight="bold" fontFamily="monospace" letterSpacing={2}>

@@ -5,12 +5,23 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
+import { pokedexReducer } from './components/redux/reducers/pokedexReducer';
+
+import { Provider } from 'react-redux';
+import { legacy_createStore as createStore } from 'redux';
+// import { createStore } from "redux";
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const store = createStore(pokedexReducer);
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store = {store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

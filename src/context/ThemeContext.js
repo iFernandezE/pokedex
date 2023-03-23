@@ -9,12 +9,7 @@ const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(initialTheme);
 
   const handleTheme = (e) => {
-    //console.log(e.target.checked)
-    // if (e.target.value === 'light') {
-    //   setTheme('light');
-    // } else {
-    //   setTheme('dark');
-    // }
+    
     if (e.target.checked === true) {
       setTheme('light');
     } else {
