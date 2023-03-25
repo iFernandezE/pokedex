@@ -6,6 +6,7 @@ import Header from './common/Header';
 import Footer from './common/Footer';
 import React, { useContext } from 'react';
 import ThemeContext from '../context/ThemeContext';
+import FavoritesPage from './FavoritesPage';
 
 function AppUI() {
     const data = useContext(ThemeContext);
@@ -17,11 +18,11 @@ function AppUI() {
                 <Header />
             </div>
             <div>
-
                 <Routes>
                     <Route path='/' element={<></>} />
                     <Route path='/login' element={<SignInComponent />} />
                     <Route path='/pokedex' element={<Pokedex />} />
+                    <Route path='/favorites' element ={<FavoritesPage/>} />
                 </Routes>
             </div>
             <div className='footerNav'>

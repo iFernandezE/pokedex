@@ -15,6 +15,7 @@ import { Box } from '@mui/system';
 import fondoCarta from '../images/fondoCarta.jpg';
 import fondoCartaDark from '../images/fondoCartaDark.jpg';
 import Abilities from './Abilities';
+
 import React, { useContext } from 'react';
 import ThemeContext from '../context/ThemeContext';
 
@@ -47,7 +48,7 @@ export default function MediaCard(props) {
     }
 
     function handleFavoriteClick() {
-        console.log(isFavorite);
+        // console.log(isFavorite);
         if(!isFavorite)dispatch(addToFavorites(props.pokeNum));
         else if(isFavorite)dispatch(removeFromFavorites(props.pokeNum));
     }
@@ -89,8 +90,8 @@ export default function MediaCard(props) {
                         onClick={handleFavoriteClick}
                         aria-label="settings"
                         >
-                        
-                        {isFavorite ? <StarIcon fontSize="large" sx={{ color: 'gold' }}/> : <StarBorderIcon fontSize="large" />}
+                        {/* {isFavorite ? <StarIcon fontSize="large" sx={{ color: 'gold' }}/> : <StarBorderIcon fontSize="large" />} */}
+                        {isFavorite ? <StarIcon fontSize="large" sx={{ color: data.theme==='light'? 'red':'gold' }}/> : <StarBorderIcon fontSize="large" />}
                     </IconButton>
                 }
                 title={

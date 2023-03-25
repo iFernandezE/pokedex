@@ -1,5 +1,3 @@
-// import { ADD_TO_FAVORITES,REMOVE_FROM_FAVORITES } from "./types";
-
 import { REMOVE_FROM_FAVORITES,ADD_TO_FAVORITES } from "./types"
 
 export const addToFavorites = (payload) => {

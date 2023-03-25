@@ -50,6 +50,11 @@ export default function Header() {
               Pokedex
             </NavLink>
           </Button>
+          <Button>
+            <NavLink to="/favorites" className={data.theme === 'light'? 'navLinkLightText':'navLinkDarkText'}>
+              Favorites
+            </NavLink>
+          </Button>
 
           <FormControlLabel
           className={data.theme === 'light'? 'navLinkLightText':'navLinkDarkText'}
