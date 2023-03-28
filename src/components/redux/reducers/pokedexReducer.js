@@ -9,6 +9,6 @@ export const pokedexReducer = (state = [], action) => {
         case ADD_TO_FAVORITES:
             return [...state, action.payload]
         case REMOVE_FROM_FAVORITES:
-            return state.filter(n => n !== action.payload)
+            return state.filter(element => element.pokeNum !== action.payload)
     }
 }

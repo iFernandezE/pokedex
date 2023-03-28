@@ -24,7 +24,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 export default function MediaCard(props) {
-
     const favorites = useSelector(state => state);
     const dispatch = useDispatch();
 
@@ -42,14 +41,17 @@ export default function MediaCard(props) {
 
     var isFavorite = false;
     if (favorites) {
-        if(favorites.includes(props.pokeNum)){
-            isFavorite = true;
-        }
+        favorites.forEach(element => {
+            if(element.pokeNum === props.pokeNum) isFavorite = true;
+        });
+        // if(favorites.includes(props.pokeNum)){
+        //     isFavorite = true;
+        // }
     }
 
     function handleFavoriteClick() {
         // console.log(isFavorite);
-        if(!isFavorite)dispatch(addToFavorites(props.pokeNum));
+        if(!isFavorite)dispatch(addToFavorites({pokeNum: props.pokeNum, pokeName:props.pokeName, pokeTypes:props.pokeTypes, pokeImage:props.pokeImageLow}));
         else if(isFavorite)dispatch(removeFromFavorites(props.pokeNum));
     }
 

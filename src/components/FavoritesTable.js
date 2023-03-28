@@ -4,6 +4,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { useContext } from 'react';
 import ThemeContext from '../context/ThemeContext';
 import { useSelector } from 'react-redux';
+import { border } from '@mui/system';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
@@ -59,34 +60,39 @@ const rows = [
 ];
 
 export default function FavoritesTable() {
-  const data = useContext(ThemeContext);
-  
+  const data = useContext(ThemeContext); // THEME
+
   const favorites = useSelector(state => state);
-  
+  console.log(favorites)
+
   const columns = [
-    { field: 'id', headerName: 'FAVORITE POKEMON ID', width: 200 }
-  ]
-  var rows = [
-    { id: 0}
+    { field: 'id', headerName: 'ID', width: 50 },
+    { field: 'pokeName', headerName: 'Name', width: 200 },
+    { field: 'pokeTypes', headerName: 'Types', width: 200 },
+    
   ]
 
-  let favoritesArray=[];
+  let rows = []
   if (favorites) {
-    favorites.forEach(element => {
-      favoritesArray.push({id:element})
+    console.log(favorites)
+    favorites.forEach(e => {
+      let types ="";
+      e.pokeTypes.map(item =>{
+        types += item.type.name + ", "
+      })
+      rows.push({ id: e.pokeNum, pokeName: e.pokeName, pokeTypes: types})
     });
-    console.log(favoritesArray);
-    rows = favoritesArray;
   }
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: 400, width: 500, margin:'auto', color:"white"}}>
+      <h3>FAVORITE POKEMONS</h3>
       <DataGrid
+        sx={{color:"white", border:"white 3px solid", fontSize:"20px"}}
         rows={rows}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
-        checkboxSelection
       />
     </div>
   );

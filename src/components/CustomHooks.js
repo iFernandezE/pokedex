@@ -31,9 +31,9 @@ function usePokeChanger(pokeApiDomain) {
         fetch(`${pokeApiDomain}${currentId}`)
             .then(response => response.json())
             .then(pokemonData => {
-                setCurrentId(pokemonData.id);
+                //setCurrentId(pokemonData.id);
                 setPokemon(pokemonData);
-                console.log(pokemonData.name);
+                //console.log(pokemonData.name);
                 fetch(`${pokemonData.species.url}`)
                     .then(response2 => response2.json())
                     .then(pokemonSpeciesData => {
@@ -51,19 +51,6 @@ function usePokeChanger(pokeApiDomain) {
     function nextPokemon() {
         setCurrentId(nextId(currentId));
     }
-
-    // function previousPokemon() {
-    //     if (currentId === 1) setCurrentId(1);
-    //     else setCurrentId(currentId - 1);
-    // }
-
-    // function nextPokemon() {
-    //     if (currentId === 150) setCurrentId(150);
-    //     else setCurrentId(currentId + 1);
-    // }
-
-
-
     return [previousPokemon, nextPokemon, pokemon, pokemonSpecies];
 }
 
